@@ -1,7 +1,8 @@
 # SpringBoot-HelloWorld
 
 Hi, I want to help you here with the simplest methods to pay attention only to the main content so that you can develop Spring Boot projects everywhere with Gradle build tools, without IDEs.
-*This tutorial is a summary of the main Spring.io site tutorial and some other resources*
+
+**This tutorial is a summary of the main Spring.io site tutorial and some other resources**
 
 ## Lessons:
    - [Lesson-1: What is the Spring Boot?](#lesson-one)
@@ -136,7 +137,7 @@ public class HelloWorld {
 }
 ```
 
-Here HelloWorld uses Joda Time’s LocalTime class to get and print the current time.
+Here HelloWorld uses **Joda Time’s LocalTime class** to get and print the current time.
 
 If you ran gradle build to build the project now, the build would fail because you have not declared Joda Time as a compile dependency in the build.
 
