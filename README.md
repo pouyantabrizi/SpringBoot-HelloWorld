@@ -28,17 +28,17 @@ First you set up a Java project for Gradle to build. To keep the focus on Gradle
 ###### Create the directory structure
 In a project directory of your choosing, create the following subdirectory structure; for example, with *mkdir -p src/main/java/com/mycompany/hello*
 *src/main/java* is a base directory for java and spring projects and ../com/mycompany/hello directory is a project custom directory that you can use any custom name for your project. Notice: don't change *src/main/java*  any way
-
+```
 └── src
     └── main
         └── java
             └── *** (Custom, You must have at least one package)
-            
+```
 *Don't use the “default” Package*
 When a class does not include a package declaration, it is considered to be in the “default package”. The use of the “default package” is generally discouraged and should be avoided. It can cause particular problems for Spring Boot applications that use the @ComponentScan, @EntityScan, or @SpringBootApplication annotations since every class from every jar is read.
 
 ###### Create java classes in your project 
-
+```
 └── src
     └── main
         └── java
@@ -47,7 +47,7 @@ When a class does not include a package declaration, it is considered to be in t
                   └── hello
                      └── HelloWorld.java
                      └── Greeter.java
-                     
+```
 HelloWorld.java:
 ```java
 package com.mycompany.hello;
@@ -59,7 +59,6 @@ public class HelloWorld {
   }
 }
 ```
-
 Greeter.java:
 ```java
 package com.mycompany.hello;
