@@ -85,7 +85,7 @@ gradle tasks
 You should see a list of available tasks.
 
 ### Build Java Code
-Starting simple, create a very basic *build.gradle* file in the <project folder> you created at the beginning of this guide. Give it just just one line:
+Starting simple, create a very basic **build.gradle** file in the **project folder** you created at the beginning of this guide. Give it just just one line:
    
 ```
 └── src
