@@ -7,6 +7,7 @@ Hi, I want to help you here with the simplest methods to pay attention only to t
    - [Lesson-1: What is the Spring Boot?](#lesson-one)
    - [Lesson-2: Create the project](#lesson-two)
    - [Lesson-3: Install Gradle to build the project](#lesson-three)
+   - [Lesson-4: Declare dependencies in gradle.build file](#lesson-four)
 
 <h2 id="lesson-one">Lesson 1</h2>
 In this lesson we will talk about spring boot
@@ -109,10 +110,120 @@ The reports folder should contain a report of running unit tests on the project.
 
 The libs folder should contain a JAR file that is named after the project’s folder. Further down, you’ll see how you can specify the name of the JAR and its version.
 
-                     
-                     
+<h2 id="lesson-four">Lesson 4</h2>
+In this lesson we will declare dependencies in gradle.build file
 
+### Declare dependencies
+The simple Hello World sample is completely self-contained and does not depend on any additional libraries. Most applications, however, depend on external libraries to handle common and/or complex functionality.
 
+For example, suppose that in addition to saying "Hello World!", you want the application to print the current date and time. You could use the date and time facilities in the native Java libraries, but you can make things more interesting by using the Joda Time libraries.
 
+First, change **HelloWorld.java** to look like this:
+
+```java
+package com.mycompany.hello;
+
+import org.joda.time.LocalTime;
+
+public class HelloWorld {
+  public static void main(String[] args) {
+    LocalTime currentTime = new LocalTime();
+    System.out.println("The current local time is: " + currentTime);
+
+    Greeter greeter = new Greeter();
+    System.out.println(greeter.sayHello());
+  }
+}
+```
+
+Here HelloWorld uses Joda Time’s LocalTime class to get and print the current time.
+
+If you ran gradle build to build the project now, the build would fail because you have not declared Joda Time as a compile dependency in the build.
+
+For starters, you need to add a source for 3rd party libraries.(Add to build.gradle file)
+```
+repositories {
+    mavenCentral()
+}
+```
+
+The repositories block indicates that the build should resolve its dependencies from the Maven Central repository. Gradle leans heavily on many conventions and facilities established by the Maven build tool, including the option of using Maven Central as a source of library dependencies.
+
+Now that we’re ready for 3rd party libraries, let’s declare some.(Add to build.gradle file)
+```
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation "joda-time:joda-time:2.2"
+    testImplementation "junit:junit:4.12"
+}
+```
+
+With the dependencies block, you declare a single dependency for Joda Time. Specifically, you’re asking for (reading right to left) version 2.2 of the joda-time library, in the joda-time group.
+
+Another thing to note about this dependency is that it is a compile dependency, indicating that it should be available during compile-time (and if you were building a WAR file, included in the /WEB-INF/libs folder of the WAR). Other notable types of dependencies include:
+
+implementation. Required dependencies for compiling the project code, but that will be provided at runtime by a container running the code (for example, the Java Servlet API).
+
+testImplementation. Dependencies used for compiling and running tests, but not required for building or running the project’s runtime code.
+
+Finally, let’s specify the name for our JAR artifact.
+```
+jar {
+    archiveBaseName = 'gs-gradle'
+    archiveVersion =  '0.1.0'
+}
+```
+Now run **gradle build** again
+At this stage, you will have built your code. You can see the results here:
+
+```
+build
+├── classes
+│   └── main
+│       └── hello
+│           ├── Greeter.class
+│           └── HelloWorld.class
+├── dependency-cache
+├── libs
+│   └── gs-gradle-0.1.0.jar
+└── tmp
+    └── jar
+        └── MANIFEST.MF
+```
+Included are the two expected class files for Greeter and HelloWorld, as well as a JAR file. Take a quick peek:
+```
+$ jar tvf build/libs/gs-gradle-0.1.0.jar
+
+  0 Fri May 30 16:02:32 CDT 2014 META-INF/
+ 25 Fri May 30 16:02:32 CDT 2014 META-INF/MANIFEST.MF
+  0 Fri May 30 16:02:32 CDT 2014 hello/
+369 Fri May 30 16:02:32 CDT 2014 hello/Greeter.class
+988 Fri May 30 16:02:32 CDT 2014 hello/HelloWorld.class
+```
+The class files are bundled up. It’s important to note, that even though you declared joda-time as a dependency, the library isn’t included here. And the JAR file isn’t runnable either.
+
+To make this code runnable, we can use gradle’s application plugin. Add this to your build.gradle file.
+```
+apply plugin: 'application'
+
+mainClassName = 'hello.HelloWorld'
+```
+Then you can run the app!
+```
+$ gradle run
+
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:run
+The current local time is: 16:16:20.544
+Hello world!
+
+BUILD SUCCESSFUL
+
+Total time: 3.798 secs
+```
 
 
