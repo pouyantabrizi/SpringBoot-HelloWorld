@@ -200,7 +200,7 @@ build
 ```
 Included are the two expected class files for Greeter and HelloWorld, as well as a JAR file. Take a quick peek:
 ```
-$ jar tvf build/libs/gs-gradle-0.1.0.jar
+$ jar tvf build/libs/HelloWorld-0.1.0.jar
 
   0 Fri May 30 16:02:32 CDT 2014 META-INF/
  25 Fri May 30 16:02:32 CDT 2014 META-INF/MANIFEST.MF
