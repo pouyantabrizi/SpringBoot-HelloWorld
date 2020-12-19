@@ -1,0 +1,9 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'com.mycompany.hello.HelloWorld'
+
+jar {
+    archiveBaseName = 'HelloWorld'
+    archiveVersion =  '0.1.0'
+}

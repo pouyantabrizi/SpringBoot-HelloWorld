@@ -1,0 +1,4 @@
+com/mycompany/hello/Greeter.java
+ com.mycompany.hello.Greeter
+com/mycompany/hello/HelloWorld.java
+ com.mycompany.hello.HelloWorld
