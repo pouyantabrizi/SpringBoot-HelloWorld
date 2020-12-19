@@ -177,7 +177,7 @@ testImplementation. Dependencies used for compiling and running tests, but not r
 Finally, let’s specify the name for our JAR artifact.
 ```
 jar {
-    archiveBaseName = 'gs-gradle'
+    archiveBaseName = 'HelloWorld'
     archiveVersion =  '0.1.0'
 }
 ```
@@ -193,7 +193,7 @@ build
 │           └── HelloWorld.class
 ├── dependency-cache
 ├── libs
-│   └── gs-gradle-0.1.0.jar
+│   └── HelloWorld-0.1.0.jar
 └── tmp
     └── jar
         └── MANIFEST.MF
@@ -214,7 +214,7 @@ To make this code runnable, we can use gradle’s application plugin. Add this t
 ```
 apply plugin: 'application'
 
-mainClassName = 'hello.HelloWorld'
+mainClassName = 'com.mycompany.hello.HelloWorld'
 ```
 Then you can run the app!
 ```
@@ -240,7 +240,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 
-mainClassName = 'hello.HelloWorld'
+mainClassName = 'com.mycompany.hello.HelloWorld'
 
 // tag::repositories[]
 repositories {
