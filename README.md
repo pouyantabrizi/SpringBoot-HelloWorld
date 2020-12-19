@@ -1,6 +1,7 @@
 # SpringBoot-HelloWorld
 
 Hi, I want to help you here with the simplest methods to pay attention only to the main content so that you can develop Spring Boot projects everywhere with Gradle build tools, without IDEs.
+*This tutorial is a summary of the main Spring.io site tutorial and some other resources*
 
 ## Lessons:
    - [Lesson-1: What is the Spring Boot?](#lesson-one)
@@ -70,7 +71,39 @@ public class Greeter {
 }
 ```
 
+<h2 id="lesson-three">Lesson 3</h2>
+In this lesson we will install Gradle build tools to build our first project
 
+###### Install Gradle
+Go ahead to [Gradle install](https://gradle.org/install/) and install gradle on your operating system(OS), make sure your installation is correct, after that run *gradle -v* to see your gradle version
+
+Now that Gradle is installed, see what it can do. Before you even create a build.gradle file for the project, you can ask it what tasks are available:
+
+gradle tasks
+You should see a list of available tasks.
+
+###### Build Java Code
+Starting simple, create a very basic *build.gradle* file in the <project folder>(*../com/mycompany/hello) you created at the beginning of this guide. Give it just just one line:
+
+```apply plugin: 'java'```
+
+This single line in the build configuration brings a significant amount of power. Run gradle tasks again, and you see new tasks added to the list, including tasks for building the project, creating JavaDoc, and running tests.
+
+You’ll use the gradle build task frequently. This task compiles, tests, and assembles the code into a JAR file. You can run it like this:
+```gradle build```
+After a few seconds, "BUILD SUCCESSFUL" indicates that the build has completed.
+
+To see the results of the build effort, take a look in the build folder. Therein you’ll find several directories, including these three notable folders:
+
+*classes. The project’s compiled .class files.*
+*reports. Reports produced by the build (such as test reports).*
+*libs. Assembled project libraries (usually JAR and/or WAR files).*
+
+The classes folder has .class files that are generated from compiling the Java code. Specifically, you should find HelloWorld.class and Greeter.class.
+At this point, the project doesn’t have any library dependencies, so there’s nothing in the dependency_cache folder.
+The reports folder should contain a report of running unit tests on the project. Because the project doesn’t yet have any unit tests, that report will be uninteresting.
+
+The libs folder should contain a JAR file that is named after the project’s folder. Further down, you’ll see how you can specify the name of the JAR and its version.
 
                      
                      
