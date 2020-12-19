@@ -26,7 +26,7 @@ In this lesson we will create a new project in current directory
 ### Set up the project
 First you set up a Java project for Gradle to build. To keep the focus on Gradle, make the project as simple as possible for now.
 
-###### Create the directory structure
+### Create the directory structure
 In a project directory of your choosing, create the following subdirectory structure; for example, with *mkdir -p src/main/java/com/mycompany/hello*
 *src/main/java* is a base directory for java and spring projects and ../com/mycompany/hello directory is a project custom directory that you can use any custom name for your project. Notice: don't change *src/main/java*  any way
 ```
@@ -38,7 +38,7 @@ In a project directory of your choosing, create the following subdirectory struc
 *Don't use the “default” Package*
 When a class does not include a package declaration, it is considered to be in the “default package”. The use of the “default package” is generally discouraged and should be avoided. It can cause particular problems for Spring Boot applications that use the @ComponentScan, @EntityScan, or @SpringBootApplication annotations since every class from every jar is read.
 
-###### Create java classes in your project 
+### Create java classes in your project 
 ```
 └── src
     └── main
@@ -74,7 +74,7 @@ public class Greeter {
 <h2 id="lesson-three">Lesson 3</h2>
 In this lesson we will install Gradle build tools to build our first project
 
-###### Install Gradle
+### Install Gradle
 Go ahead to [Gradle install](https://gradle.org/install/) and install gradle on your operating system(OS), make sure your installation is correct, after that run *gradle -v* to see your gradle version
 
 Now that Gradle is installed, see what it can do. Before you even create a build.gradle file for the project, you can ask it what tasks are available:
@@ -82,7 +82,7 @@ Now that Gradle is installed, see what it can do. Before you even create a build
 gradle tasks
 You should see a list of available tasks.
 
-###### Build Java Code
+### Build Java Code
 Starting simple, create a very basic *build.gradle* file in the <project folder>(*../com/mycompany/hello) you created at the beginning of this guide. Give it just just one line:
 
 ```apply plugin: 'java'```
