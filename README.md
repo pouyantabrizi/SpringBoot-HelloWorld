@@ -85,8 +85,13 @@ gradle tasks
 You should see a list of available tasks.
 
 ### Build Java Code
-Starting simple, create a very basic *build.gradle* file in the <project folder>(*../com/mycompany/hello) you created at the beginning of this guide. Give it just just one line:
-
+Starting simple, create a very basic *build.gradle* file in the <project folder> you created at the beginning of this guide. Give it just just one line:
+   
+```
+└── src
+└── build.gradle
+```
+   
 ```apply plugin: 'java'```
 
 This single line in the build configuration brings a significant amount of power. Run gradle tasks again, and you see new tasks added to the list, including tasks for building the project, creating JavaDoc, and running tests.
